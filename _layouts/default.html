@@ -23,9 +23,15 @@
       right: 0;
       left: 0;
       bottom: 0;
+      height: 100%;
       object-fit: scale-down;
       opacity: 0;
       transition: opacity .2s;
+    }
+
+    .hover-article .image-container .project-image {
+      max-height: 400px;
+      object-fit: contain;
     }
 
     /* Show the image on hover */
@@ -72,17 +78,21 @@
               <h1>
                 Etienne Meunier
               </h1>
-              <p>I am a Postdoc at <a href="https://www.inria.fr/fr/ange">Inria Ange Team</a> in Paris, working on deep learning approaches for physical systems and ocean modeling.
-                My PhD focused on unsupervised training of neural networks for motion analysis. I was part of the <a href="https://team.inria.fr/serpico/">Serpico team</a>, led by <a href="https://team.inria.fr/serpico/team-members/charles-kervrann-2/">Charles Kervrann</a>. My PhD advisor was <a href="https://team.inria.fr/serpico/team-members/patrick-bouthemy/">Patrick Bouthemy</a>.
+              <p>I am a Postdoc at <a href="https://www.inria.fr/fr/ange">Inria Ange Team</a> in Paris, where I work closely with <a href="https://www.locean.ipsl.fr/">LOCEAN-IPSL</a> on machine learning methods for physical systems, with a focus on ocean and climate modelling.
+                I came to climate science after a PhD on unsupervised training of neural networks for motion analysis, which I did in the <a href="https://team.inria.fr/serpico/">Serpico team</a> supervised by <a href="https://team.inria.fr/serpico/team-members/patrick-bouthemy/">Patrick Bouthemy</a>.
+                Before that, from 2019 to 2020, I was a visiting scholar in the <a href="https://saramostafavi.github.io/">Mostafavi Lab</a> at the <a href="https://www.ubc.ca/">University of British Columbia</a>, where I developed deep learning approaches to interpret genomics data.
               </p>
               <p>
-                From 2019 to 2020, I worked as a visiting scholar at <a href="https://www.ubc.ca/">University British Columbia</a> in  <a href="https://saramostafavi.github.io/">Mostafavi Lab</a> working on deep learning approach to interpret genomics data.
+                My interests lie where machine learning meets physics. I like building models that learn from data while still respecting the equations behind it, whether they are hybrid models that stay stable over long simulations, generative models that produce physically consistent ocean states, or differentiable simulators. Along the way, I enjoy working with climate scientists and writing research code that others can actually use.
               </p>
               <p>
-                I hold a Master's degree in Computer Science from <a href="https://www.bu.edu/">Boston University</a> and a "Diplôme d’ingénieur" (MS) from <a href="https://www.ece.fr/en/">ECE Paris</a>. At Boston University I worked on a research project on predicting energy consumption from historical data with <a href="https://www.bu.edu/met/profile/eugene-pinsky/">Eugene Pinsky</a>. During my study, I also worked as a freelance researcher developping a shark detection algorithm for the <a href="https://www.securite-requin.re/">CSR</a> in La Reunion Island.
+                At Inria / IPSL, I co-supervise the PhDs of <a href="https://www.ljll.fr/membre/gorce-blandine/">Blandine Gorce</a>, who builds generative models to find stable states of large-scale partial differential equations, and <a href="https://www.ljll.fr/membre/janvier-maya/">Maya Janvier</a>, who works on making hybrid models stable. I also work closely with <a href="https://rg625.github.io/about.html">Rares Dimitrie Grozavescu</a> at the University of Cambridge on Koopman operators, and with <a href="https://scholar.google.com/citations?user=7t69pfAAAAAJ&amp;hl=en">Markus Jochum</a> at the Niels Bohr Institute in Copenhagen on differentiable ocean models.
               </p>
               <p>
-                 My interests lie in unsupervised deep learning applications, particularly in diverse signal processing areas. Moreover, I am enthusiastic about exploring novel research domains. I have a strong background in computer science and mathematics related to machine learning. Additionally, I am proficient in writing functional software and understanding cutting-edge papers in computer vision. Being curious and hard-working, I am eager to immerse myself in exploring new subjects.
+                If you work on related topics, or you are a student looking for an internship, feel free to reach out!
+              </p>
+              <p>
+                I also have a <a href="https://etienne-meunier.github.io/Blog/">Blog</a> where I write about the things I am interested in and wish I had more time to work on!
               </p>
               <p style="text-align:center">
                 etienne.meunier@inria.fr &nbsp;/&nbsp;
@@ -100,14 +110,19 @@
         </table>
       </table>
 
-        <div style="width:100%;max-width:1200px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <div style="width:100%;max-width:1300px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
               <p>
-              My current work focuses on computer vision, machine learning, video analysis and unsupervised learning.
+              My current work focuses on machine learning for physical systems and ocean modelling. Before that, I worked on unsupervised video analysis. Today I mainly work on three things:
               </p>
+              <ul>
+                <li><strong>Hybrid models.</strong> Coupling neural networks with numerical models, and making sure they stay stable over long simulations.</li>
+                <li><strong>Generative models for the ocean.</strong> Producing physically consistent ocean states, for example to speed up the spin-up of ocean models.</li>
+                <li><strong>Differentiable and learned dynamics.</strong> Differentiable ocean models and learned latent dynamics such as Koopman operators, for forecasting and data assimilation.</li>
+              </ul>
             </td>
           </tr>
         </table>
@@ -116,16 +131,16 @@
           {% for cat in post.categories %}
             {% if cat == 'research' %}
             <tr class="hover-article"> <!-- Add the class "hover-article" to the row -->
-             <td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px">
+             <td style="padding:2%;width:55%;vertical-align:middle;min-width:120px">
                <!-- Wrap the images in a container with the class "image-container" -->
-               <div class="image-container">
+               <div class="image-container"{% if post.image_height %} style="height:{{ post.image_height }}px;display:flex;align-items:center;"{% endif %}>
                  <!-- The default image (post.image) -->
                  <img  class="project-image" src="{{ post.image }}" alt="project image" style="width: 100%;"/>
                   <!-- Hover image (post.image2) -->
                  <img class="hover-image" src="{{ post.image2 }}" alt="Hover Image" style="width: 100%;"/>
                </div>
               </td>
-              <td style="padding:2.5%;width:50%;vertical-align:middle">
+              <td style="padding:2%;width:45%;vertical-align:middle">
               <h3>{{post.title}}</h3>
               <br>
               {{post.authors}}
@@ -158,6 +173,27 @@
           {% endif %}
           {% endfor %}
           {% endfor %}
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Papers Under Review</h2>
+              <ul>
+                <li>
+                  <strong>Leveraging differentiable programming for ocean model design and calibration</strong><br>
+                  Said Ouala, Hugo Frezat, <strong>Etienne Meunier</strong>, Ronan Fablet and Julien Le Sommer<br>
+                  A differentiable version of the JAX-based Veros ocean model, used to calibrate model parameters with gradients.
+                </li>
+                <br>
+                <li>
+                  <strong>Versatile Earth-systems COupleR (VerCOR v.0.4.6): Quick and easy coupling and prototyping of Earth system model components in Python and JAX</strong><br>
+                  Roman Nuterman, Isak Rockström, Vivek Veluvali, <strong>Etienne Meunier</strong>, Aster Lei Stoustrup and Markus Jochum<br>
+                  A differentiable JAX coupler for Earth system model components, with built-in Bayesian and gradient-based tuning.
+                </li>
+              </ul>
+            </td>
+          </tr>
         </table>
 
 
