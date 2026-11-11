@@ -120,8 +120,8 @@
               </p>
               <ul>
                 <li><strong>Hybrid models.</strong> Coupling neural networks with numerical models, and making sure they stay stable over long simulations.</li>
-                <li><strong>Generative models for the ocean.</strong> Producing physically consistent ocean states, for example to speed up the spin-up of ocean models.</li>
-                <li><strong>Differentiable and learned dynamics.</strong> Differentiable ocean models and learned latent dynamics such as Koopman operators, for forecasting and data assimilation.</li>
+                <li><strong>Physically constrained neural networks.</strong> Diffusion models generating valid physical states, Koopman operators with continuous latent dynamics, and divergence-free neural networks.</li>
+                <li><strong>Differentiable fluid simulation.</strong> Differentiable ocean and Earth system models, used to calibrate parameters and train neural components through the solver.</li>
               </ul>
             </td>
           </tr>
@@ -150,9 +150,8 @@
               <br>
               {% if post.paper %}
               <a href="{{post.paper}}">paper</a> /
-              {% endif %}
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">arxiv</a> /
+              {% elsif post.arxiv %}
+              <a href="{{post.arxiv}}">paper</a> /
               {% endif %}
               {% if post.video %}
               <a href="{{post.video}}">video</a> /
@@ -175,26 +174,6 @@
           {% endfor %}
         </table>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Papers Under Review</h2>
-              <ul>
-                <li>
-                  <strong>Leveraging differentiable programming for ocean model design and calibration</strong><br>
-                  Said Ouala, Hugo Frezat, <strong>Etienne Meunier</strong>, Ronan Fablet and Julien Le Sommer<br>
-                  A differentiable version of the JAX-based Veros ocean model, used to calibrate model parameters with gradients.
-                </li>
-                <br>
-                <li>
-                  <strong>Versatile Earth-systems COupleR (VerCOR v.0.4.6): Quick and easy coupling and prototyping of Earth system model components in Python and JAX</strong><br>
-                  Roman Nuterman, Isak Rockström, Vivek Veluvali, <strong>Etienne Meunier</strong>, Aster Lei Stoustrup and Markus Jochum<br>
-                  A differentiable JAX coupler for Earth system model components, with built-in Bayesian and gradient-based tuning.
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
 
 
                 <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
