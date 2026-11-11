@@ -5,6 +5,7 @@ date: 2026-10-15 12:00:00 +00:00
 image: images/compact-divfree.jpg
 image2: images/compact-divfree-2.jpg
 categories: research
+topics: "vision"
 author: "Etienne Meunier"
 venue: "Submitted to ICLR"
 authors: "Sébastien Herbreteau and <strong>Etienne Meunier</strong>"

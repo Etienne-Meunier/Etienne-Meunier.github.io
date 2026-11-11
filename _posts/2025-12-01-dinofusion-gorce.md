@@ -5,6 +5,7 @@ date: 2025-12-01 12:00:00 +00:00
 image2: images/dinofusion-gorce.png
 image: images/dinofusion-gorce-2.jpg
 categories: research
+topics: "ocean"
 author: "Etienne Meunier"
 venue: "NeurIPS Workshop : Tackling Climate Change with Machine Learning"
 authors: "Blandine Gorce, Luther Ollier, David Kamm and <strong>Etienne Meunier</strong>"

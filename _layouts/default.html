@@ -51,6 +51,34 @@
         top: 0;
         left: 0;*/
     }
+
+    .topic-filter {
+      text-align: center;
+      margin: 0 0 10px 0;
+    }
+
+    .topic-filter button {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 14px;
+      color: #1772d0;
+      background: none;
+      border: 1px solid #1772d0;
+      border-radius: 16px;
+      padding: 4px 14px;
+      margin: 4px;
+      cursor: pointer;
+    }
+
+    .topic-filter button:hover {
+      color: #f09228;
+      border-color: #f09228;
+    }
+
+    .topic-filter button.active {
+      color: #fff;
+      background: #1772d0;
+      border-color: #1772d0;
+    }
 </style>
 <head>
   <title>{{ site.name }}</title>
@@ -126,11 +154,17 @@
             </td>
           </tr>
         </table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <div class="topic-filter">
+            <button class="active" data-topic="all">All</button>
+            <button data-topic="ocean">Ocean modelling</button>
+            <button data-topic="dynamics">Dynamical systems</button>
+            <button data-topic="vision">Computer vision</button>
+          </div>
+          <table id="research-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
             {% for post in site.posts %}
           {% for cat in post.categories %}
             {% if cat == 'research' %}
-            <tr class="hover-article"> <!-- Add the class "hover-article" to the row -->
+            <tr class="hover-article" data-topics="{{ post.topics }}">
              <td style="padding:2%;width:55%;vertical-align:middle;min-width:120px">
                <!-- Wrap the images in a container with the class "image-container" -->
                <div class="image-container"{% if post.image_height %} style="height:{{ post.image_height }}px;display:flex;align-items:center;"{% endif %}>
@@ -255,6 +289,20 @@
     </tr>
 
 
+  <script>
+    document.querySelectorAll('.topic-filter button').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var topic = button.dataset.topic;
+        document.querySelectorAll('.topic-filter button').forEach(function (b) {
+          b.classList.toggle('active', b === button);
+        });
+        document.querySelectorAll('#research-table tr.hover-article').forEach(function (row) {
+          var topics = (row.dataset.topics || '').split(' ');
+          row.style.display = (topic === 'all' || topics.indexOf(topic) !== -1) ? '' : 'none';
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
